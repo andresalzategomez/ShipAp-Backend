@@ -1,7 +1,8 @@
-const shipController = require('../controllers/ship.controller.js')
-const express = require('express')
+const shipController = require('../controllers/ship.controller.js') // importar el controlador de caracteristica
+const express = require('express') //importar los metodos de la librería express para creación de API 
 const router = express.Router()
 
+// Asignar una metodo y una ruta a un controlador, y así consumir el endpoint 
 router.post('/', shipController.createShip)
 router.get('/', shipController.getShips)
 router.get('/:shipId', shipController.getShipId)

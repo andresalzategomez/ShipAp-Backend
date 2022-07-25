@@ -1,6 +1,7 @@
-const sequelize = require('../conection')
+const sequelize = require('../conection') // importar la clase par la conexión de la base datos
 
 
+// Metodo para obtener todo los tipos de naves
 const getTypes = async (req, res) =>{
     try {
         const result = await sequelize.query('SELECT * FROM type_ship', {type: sequelize.QueryTypes.SELECT})
@@ -20,4 +21,5 @@ const getTypes = async (req, res) =>{
     }
 }
 
+// exponer los metodos a la clase de routes
 exports.getTypes = getTypes

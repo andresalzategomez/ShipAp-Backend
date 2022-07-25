@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const path = 'mysql://root:root@localhost:3306/spaceship' 
+const Sequelize = require('sequelize') // metodo para conexión rápida a la base de datos
+const path = 'mysql://root:root@localhost:3306/spaceship' // cadena de conexión a Base de datos
 
 const sequelize = new Sequelize(path, {
     dialect: 'mysql',

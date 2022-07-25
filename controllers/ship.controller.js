@@ -1,6 +1,6 @@
-const sequelize = require('../conection')
+const sequelize = require('../conection') // importar la clase par la conexión de la base datos
 
-
+// Metodo para obtener de la base de datos todas las naves
 const getShips = async (req, res) =>{
     try {
         const result = await sequelize.query('SELECT * FROM ship', {type: sequelize.QueryTypes.SELECT})
@@ -20,7 +20,7 @@ const getShips = async (req, res) =>{
     }
 }
 
-
+// Metodo para obtener de la base de datos una nave por id
 const getShipId = async (req, res) =>{
     try {
         const result = await sequelize.query(`SELECT * FROM ship 
@@ -42,6 +42,7 @@ const getShipId = async (req, res) =>{
     } 
 }
 
+// Metodo para obtener una nave, el destino de la busqueda varía según lo que envíen como parametro para la columna
 const getShipName = async (req, res) =>{
     try {
         const result = await sequelize.query(`SELECT * FROM ship 
@@ -63,6 +64,7 @@ const getShipName = async (req, res) =>{
     } 
 }
 
+// Metodo para obtener de la base de datos una nave usando un inner join con la tabla feature list
 const getShipNameInner = async (req, res) =>{
     try {
         const result = await sequelize.query(`SELECT * FROM ship s inner join feature_list f 
@@ -84,6 +86,8 @@ const getShipNameInner = async (req, res) =>{
     } 
 }
 
+
+// Metodo para crear una nave
 const createShip = async (req, res) =>{
     const {name, date_creation, date_destruction, id_type} = req.body
 
@@ -111,7 +115,7 @@ const createShip = async (req, res) =>{
     }
 }
 
-
+// Metodo para actualizar una nave
 const updateShipById = async (req, res) =>{
     const { name, date_creation, date_destruction, id_type } = req.body
     console.log(name)
@@ -144,6 +148,7 @@ const updateShipById = async (req, res) =>{
     }
 }
 
+// Metodo para eliminar una nave
 const deleteShipById = async (req, res) =>{
     try {
         const result = await sequelize.query(`DELETE FROM ship WHERE id = ${req.params.shipId}`)
@@ -166,7 +171,7 @@ const deleteShipById = async (req, res) =>{
     }
 }
 
-
+// exponer los metodos a la clase de routes
 exports.getShips = getShips
 exports.getShipId = getShipId
 exports.getShipName = getShipName
